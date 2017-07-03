@@ -52,7 +52,7 @@ echo """             .   . ..   .  .      ..  .  .. ..  .
  :        :: : :       :      : :  :    :           :     :     :: :: :
  
 ========================================================================
-Created by Jr Sec Eng Cory Courtney         Contact:ccourtney@vulsec.com
+Created by SecEng - Cory Jay Courtney       Contact:ccourtney@vulsec.com
 ========================================================================
 """
 #Take domain input
