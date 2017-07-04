@@ -131,7 +131,7 @@ automater $var | tee $var.automater.txt
 #Active from here on BE FUCKING CAREFUL, fam
 cd ~/$var/active
 clear
-echo """\e[31m 
+echo """
 ========================================================================
    WARNING: ACTIVE SCANNING ONLY PERMITTED DURING CLIENT ENGAGEMENT 
 ========================================================================
