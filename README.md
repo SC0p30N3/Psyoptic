@@ -14,6 +14,8 @@ Requires
   /bin/bash (Duh) AND whatever the tools dependencies are.
   Look... You're grown now, internet people, I can't hold your hand no moe. 
 
+
+
 <b>Passive:</b>
 
 
@@ -36,6 +38,8 @@ Requires
    dnsrecon - https://github.com/darkoperator/dnsrecon
   
    Automater - https://github.com/1aN0rmus/TekDefense-Automater
+  
+  
   
   
 
