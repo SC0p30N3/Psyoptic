@@ -34,6 +34,8 @@ Passive:
   dnsrecon - https://github.com/darkoperator/dnsrecon
   
   Automater - https://github.com/1aN0rmus/TekDefense-Automater
+  
+  
 
 Active:
   TOR - https://github.com/dgoulet/torsocks
