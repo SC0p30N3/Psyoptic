@@ -14,30 +14,34 @@ Requires
   /bin/bash (Duh) AND whatever the tools dependencies are.
   Look... You're grown now, internet people, I can't hold your hand no moe. 
 
-Passive:
-  whois dig nslookup
+<b>Passive:</b>
+
+
+   whois dig nslookup
   
-  WhatWeb - https://github.com/urbanadventurer/WhatWeb
+   WhatWeb - https://github.com/urbanadventurer/WhatWeb
+   
+   theHarvester - https://github.com/laramies/theHarvester
+   
+   CeWL - https://github.com/digininja/CeWL
   
-  theHarvester - https://github.com/laramies/theHarvester
+   Sublist3r - https://github.com/aboul3la/Sublist3r
   
-  CeWL - https://github.com/digininja/CeWL
+   checkpwnedemails - https://github.com/Techno-Hwizrdry/checkpwnedemails
   
-  Sublist3r - https://github.com/aboul3la/Sublist3r
+   URLCrazy - https://github.com/laramies/theHarvester
   
-  checkpwnedemails - https://github.com/Techno-Hwizrdry/checkpwnedemails
+   sslscan - https://github.com/rbsec/sslscan
   
-  URLCrazy - https://github.com/laramies/theHarvester
+   dnsrecon - https://github.com/darkoperator/dnsrecon
   
-  sslscan - https://github.com/rbsec/sslscan
-  
-  dnsrecon - https://github.com/darkoperator/dnsrecon
-  
-  Automater - https://github.com/1aN0rmus/TekDefense-Automater
+   Automater - https://github.com/1aN0rmus/TekDefense-Automater
   
   
 
-Active:
+<b>Active:</b>
+
+   
   TOR - https://github.com/dgoulet/torsocks
   
   WPScan - https://github.com/wpscanteam/wpscan
