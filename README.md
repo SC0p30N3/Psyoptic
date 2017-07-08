@@ -15,22 +15,35 @@ Requires
   Look... You're grown now, internet people, I can't hold your hand no moe. 
 
 Passive:
-  whois dig nslookup 
+  whois dig nslookup
+  
   WhatWeb - https://github.com/urbanadventurer/WhatWeb
+  
   theHarvester - https://github.com/laramies/theHarvester
+  
   CeWL - https://github.com/digininja/CeWL
+  
   Sublist3r - https://github.com/aboul3la/Sublist3r
+  
   checkpwnedemails - https://github.com/Techno-Hwizrdry/checkpwnedemails
+  
   URLCrazy - https://github.com/laramies/theHarvester
+  
   sslscan - https://github.com/rbsec/sslscan
+  
   dnsrecon - https://github.com/darkoperator/dnsrecon
+  
   Automater - https://github.com/1aN0rmus/TekDefense-Automater
 
 Active:
   TOR - https://github.com/dgoulet/torsocks
-  Proxychains - https://github.com/haad/proxychains
+  
   WPScan - https://github.com/wpscanteam/wpscan
+  
   ike-scan - https://github.com/royhills/ike-scan
+  
   sqlmap - https://github.com/sqlmapproject/sqlmap
+  
   nikto - https://github.com/sullo/nikto
+  
   golismero - https://github.com/golismero/golismero
