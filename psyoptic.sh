@@ -55,7 +55,7 @@ echo """             .   . ..   .  .      ..  .  .. ..  .
 Created by Jr Sec Eng Cory Courtney         Contact:ccourtney@vulsec.com
 ========================================================================
 """
-#Take domain input
+##Take domain input
 read -p "Enter domain: " var
 read -p "The target is $var. Proceed? (Y/N) "
 if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -64,8 +64,8 @@ then
 fi
 clear
 
-#Check to see if this client has been run before
-#Check if ok to overwrite
+##Check to see if this client has been run before
+##Check if ok to overwrite
 if [[ -d ~/$var ]];
     then echo "$(tput setaf 1) 
 ========================================================================
@@ -78,14 +78,14 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]
     fi
 fi
 
-#Move to ~/ make $var dir, create active & passive dir
+##Move to ~/ make $var dir, create active & passive dir
 (cd ~/
 mkdir ~/"$var"
 cd ~/"$var"
 mkdir ~/"$var"/passive
 mkdir ~/"$var"/active) 2>/dev/null 
 
-#Passive info gathering
+##Passive info gathering
 cd ~/"$var"/passive
 clear
 echo "
@@ -94,12 +94,12 @@ echo "
 ========================================================================
 " 
 sleep 3
-#Creates a wordlist featuring unique words from the target domain
-#Sublist3r takes a long time, start it early in the background
+##Creates a wordlist featuring unique words from the target domain
+##Sublist3r takes a long time, start it early in the background
 ~/subbrute/subbrute.py -c 12 $var -o $var.subbrute &
 cewl $var > $var.wordlist.txt &
 
-#Basic network info about target
+##Basic network info about target
 (whois $var
 dig $var 
 nslookup $var) | tee $var.info.txt && cat ~/$var/passive/$var.info.txt | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | sort | uniq > ~/$var/passive/$var.addr.txt
@@ -108,14 +108,14 @@ echo "$(tput setaf 2)
 ========================================================================
   $var has been seen using the following IP addresses:
 ========================================================================
-$(tput setaf sgr0)" 
-echo "$HOME/$var/passive/$var.addr.txt " && sleep 3
+$(tput sgr0)" 
+cat "$HOME/$var/passive/$var.addr.txt" && sleep 3
 
-#Retrieve domain info
+##Retrieve domain info
 dnsrecon -d $var | tee $var.dnsrecon.txt
 urlcrazy $var | tee $var.urlcrazy.txt
 
-#Aggriate emails and domains from the Harvester and Check for pwnage
+##Aggriate emails and domains from the Harvester and Check for pwnage
 theharvester -d $var -b all > $var.harvest.txt
 cat $var.harvest.txt | grep '@' | tee $var.email.txt
 cat $var.harvest.txt | grep -oP '(?<=www\.)\s?[^\/]*' | sort | uniq | tee $var.domains.txt
@@ -123,12 +123,12 @@ cat $var.harvest.txt | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
 python ~/checkpwnedemails/checkpwnedemails.py -i $var.email.txt > $var.checkpwned.txt 
 for domain in $(cat $var.domains.txt); do nslookup -type=mx $domain ; done | tee $var.mxlookup.txt
 
-#Passive scanning SSL and host software
+##Passive scanning SSL and host software
 sslscan --no-colour $var | tee $var.sslscan.txt
 whatweb -a 3 --color=never $var | tee $var.whatweb.txt
 automater $var | tee $var.automater.txt
 
-#Active from here on BE FUCKING CAREFUL, fam
+##Active from here on BE FUCKING CAREFUL, fam
 cd ~/$var/active
 clear
 
@@ -143,25 +143,35 @@ then
     [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1 # handle exits from shell or function but don't exit interactive shell
 fi
 
+
+##Tor is still broken AF
+
 #Check if TOR should be used
-read -p "Should TOR be used? (Y/N) "
-if [[ ! $REPLY =~ ^[Yy]$ ]]
-    then service tor stop && service tor start && ~/chktor.sh && echo "$(tput setaf 1)
-========================================================================
-   SUCCESS: ACTIVE SCANS WITH ROUTE THROUGH THE TOR IP BELOW 
-========================================================================
-$(tput sgr0)" && sleep 3
-fi
+#read -p "Should TOR be used? (Y/N) "
+#if [[ ! $REPLY =~ ^[Yy]$ ]]
+#    then service tor stop && service tor start
+#        echo "$(tput setaf 2)
+#========================================================================
+#   SUCCESS: ACTIVE SCANS WITH ROUTE THROUGH THE TOR IP BELOW 
+#========================================================================
+#$(tput sgr0)" && sleep 3
+#fi
 #run a few of nmap's greatest hits
-torify $(nmap -vv -F -Pn -sS -O --top-ports 50 -iL ~/$var/passive/$var.addr.txt --oA $var.opsys 
-nmap -vv -6 -F -Pn -sS -O --top-ports 50 -iL ~/$var/passive/$var.addr.txt --oA $var.opsysIP6 
-nmap -vv -Pn -sS -sV -T3 -iL ~/$var/passive/$var.addr.txt --oA $var.sysserv 
-nmap --script /usr/share/nmap/scripts/vulscan/vulscan.nse --oA $var.vulscan -iL ~/$var/passive/$var.addr.txt 
-nmap --script /usr/share/nmap/scripts/http-enum.nse --oA $var.http -iL ~/$var/passive/$var.addr.txt
-nmap --script /usr/share/nmap/scripts/smb-enum-domains.nse --oA $var.smb -iL ~/$var/passive/$var.addr.txt 
-nmap --script /usr/share/nmap/scripts/ms-sql-info.nse -iL ~/$var/passive/$var.addr.txt --oA $var.mysqlinfo
+#tsocks
+while $(nmap -A -F $var | tee quicknmap.txt
+nmap -A -sV -F -iL ~/$var/passive/$var.ipaddress.txt --oA $var.quick
+nmap -vv -F -Pn -sS -O --top-ports 50 -iL ~/$var/passive/$var.ipaddress.txt --oA $var.opsys  
+nmap -vv -Pn -sS -sV -T3 -iL ~/$var/passive/$var.ipaddress.txt --oA $var.sysserv 
+nmap --script /usr/share/nmap/scripts/vulscan/vulscan.nse --oA $var.vulscan -iL ~/$var/passive/$var.ipaddress.txt 
+nmap --script /usr/share/nmap/scripts/http-enum.nse --oA $var.http -iL ~/$var/passive/$var.ipaddress.txt
+nmap --script /usr/share/nmap/scripts/smb-enum-domains.nse --oA $var.smb -iL ~/$var/passive/$var.ipaddress.txt
+nmap --script /usr/share/nmap/scripts/ms-sql-info.nse -iL ~/$var/passive/$var.ipaddress.txt --oA $var.mysqlinfo
 wpscan $var | tee $var.wpscan.txt
-ike-scan -A $var | tee $var.ike-scan.txt)
+ike-scan -A $var | tee $var.ike-scan.txt
+nikto -host $var -output $var.nitkto
+arachni $var | tee $var.arachni.txt) do cat "$HOME/$var/active/*" ; sleep 10
+
+
 
 #Check run WITHOUT tor    
 
