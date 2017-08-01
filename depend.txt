@@ -27,3 +27,5 @@ https://github.com/sqlmapproject/sqlmap
 https://github.com/sullo/nikto
 
 https://github.com/golismero/golismero
+
+https://github.com/Arachni/arachni.git
