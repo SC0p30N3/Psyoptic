@@ -1,7 +1,5 @@
 https://github.com/urbanadventurer/WhatWeb
 
-https://github.com/laramies/theHarvester
-
 https://github.com/digininja/CeWL
 
 https://github.com/aboul3la/Sublist3r
