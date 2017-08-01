@@ -29,3 +29,5 @@ https://github.com/golismero/golismero
 https://github.com/Arachni/arachni.git
 
 https://github.com/1N3/XSSTracer.git
+
+https://github.com/Dionach/CMSmap.git
