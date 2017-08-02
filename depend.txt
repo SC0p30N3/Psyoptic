@@ -1,7 +1,5 @@
 https://github.com/urbanadventurer/WhatWeb
 
-https://github.com/laramies/theHarvester
-
 https://github.com/digininja/CeWL
 
 https://github.com/aboul3la/Sublist3r
@@ -27,3 +25,9 @@ https://github.com/sqlmapproject/sqlmap
 https://github.com/sullo/nikto
 
 https://github.com/golismero/golismero
+
+https://github.com/Arachni/arachni.git
+
+https://github.com/1N3/XSSTracer.git
+
+https://github.com/Dionach/CMSmap.git
