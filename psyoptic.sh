@@ -157,8 +157,8 @@ fi
 #$(tput sgr0)" && sleep 3
 #fi
 #run a few of nmap's greatest hits
-#tsocks
-while $(nmap -A -F $var | tee quicknmap.txt
+#tsocks 
+(nmap -A -F $var | tee quicknmap.txt
 nmap -A -sV -F -iL ~/$var/passive/$var.ipaddress.txt --oA $var.quick
 nmap -vv -F -Pn -sS -O --top-ports 50 -iL ~/$var/passive/$var.ipaddress.txt --oA $var.opsys  
 nmap -vv -Pn -sS -sV -T3 -iL ~/$var/passive/$var.ipaddress.txt --oA $var.sysserv 
@@ -169,7 +169,9 @@ nmap --script /usr/share/nmap/scripts/ms-sql-info.nse -iL ~/$var/passive/$var.ip
 wpscan $var | tee $var.wpscan.txt
 ike-scan -A $var | tee $var.ike-scan.txt
 nikto -host $var -output $var.nitkto
-arachni $var | tee $var.arachni.txt) do cat "$HOME/$var/active/*" ; sleep 10
+arachni $var | tee $var.arachni.txt)
+
+cat "$HOME/$var/active/*" ; sleep 10
 
 
 
