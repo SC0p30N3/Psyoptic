@@ -52,7 +52,7 @@ echo """             .   . ..   .  .      ..  .  .. ..  .
  :        :: : :       :      : :  :    :           :     :     :: :: :
  
 ========================================================================
-Created by Jr Sec Eng Cory Courtney         Contact:ccourtney@vulsec.com
+Created by Cory Courtney		    https://github.com/SC0p30N3
 ========================================================================
 """
 ##Take domain input
@@ -69,7 +69,7 @@ clear
 if [[ -d ~/$var ]];
     then echo "$(tput setaf 1) 
 ========================================================================
-       WARNING:/$var EXISTS! CONTINUE AND OVERWRITE?
+            WARNING:/$var EXISTS! CONTINUE AND OVERWRITE?
 ========================================================================
 $(tput sgr0)"
 read -p "Proceed? (Y/N) "
@@ -90,7 +90,7 @@ cd ~/"$var"/passive
 clear
 echo "
 ========================================================================
- SUCCESSFULLY CREATED DIRECTORIES. PASSIVE SCANNING $var
+       SUCCESSFULLY CREATED DIRECTORIES. PASSIVE SCANNING $var
 ========================================================================
 " 
 sleep 3
@@ -158,7 +158,7 @@ fi
 #fi
 #run a few of nmap's greatest hits
 #tsocks 
-(nmap -A -F $var | tee quicknmap.txt
+nmap -A -F $var | tee quicknmap.txt
 nmap -A -sV -F -iL ~/$var/passive/$var.ipaddress.txt --oA $var.quick
 nmap -vv -F -Pn -sS -O --top-ports 50 -iL ~/$var/passive/$var.ipaddress.txt --oA $var.opsys  
 nmap -vv -Pn -sS -sV -T3 -iL ~/$var/passive/$var.ipaddress.txt --oA $var.sysserv 
@@ -169,14 +169,11 @@ nmap --script /usr/share/nmap/scripts/ms-sql-info.nse -iL ~/$var/passive/$var.ip
 wpscan $var | tee $var.wpscan.txt
 ike-scan -A $var | tee $var.ike-scan.txt
 nikto -host $var -output $var.nitkto
-arachni $var | tee $var.arachni.txt)
+arachni $var | tee $var.arachni.txt
 
 cat "$HOME/$var/active/*" ; sleep 10
 
-
-
 #Check run WITHOUT tor    
-
 #sqlmap -a -u $var -y > $var.sqlmap.txt
 #nikto -host $var -output $var.nikto
 #golismero $var -o $var-golis.txt
